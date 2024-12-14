@@ -1,6 +1,6 @@
-function Skeleton(){
+function Skeleton({height,width}){
     return(
-        <div className="w-full h-[400px] skeleton"></div>
+        <div className={`${height} ${width} skeleton`}></div>
     )
 }
 

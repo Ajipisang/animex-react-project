@@ -25,7 +25,7 @@ function NavBar(){
         }
     ]
     return(
-        <nav className="w-full px-9  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
+        <nav className="w-full px-9 z-20  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
            {icons.map((icon,index)=>
            <div className="relative ">
                 <span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>

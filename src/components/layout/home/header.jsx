@@ -36,7 +36,7 @@ function Header(props){
             {topAnime.slice(0,4).map((item,index)=>{
                 return(
                     <SwiperSlide key={index} >
-                        <Suspense fallback={<Skeleton></Skeleton>}>
+                        <Suspense fallback={<Skeleton width={"w-full"} height={"h-[308px]"}></Skeleton>}>
                             <CardHeader item={item}></CardHeader>
                         </Suspense>
                     </SwiperSlide>
