@@ -12,7 +12,7 @@ function Header(props){
     const {topAnime}=props
     const [isFirst,setIsFirst]=useState(false)
     const [isLast,setIsLast]=useState(false)
-    {console.log(isFirst)}
+   
     return(
         <>
         <Swiper  
