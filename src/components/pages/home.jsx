@@ -1,9 +1,11 @@
 import NavBar from "../ui/navbar"
+import Header from "../layout/home/header"
 function Home(){
     return(
         <div className="min-h-screen bg-purpleLight">
-        <NavBar></NavBar>
+            <Header></Header>
 
+        <NavBar></NavBar>
         </div>
     )
 }
