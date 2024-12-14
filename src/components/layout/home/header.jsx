@@ -1,4 +1,4 @@
-
+import { Suspense } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,7 +7,9 @@ import BoxReveal from "../../ui/magic ui/box";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
-import CardHeader from "../../fragments/home/cardheader";
+import CardHeader from '../../fragments/home/cardheader';
+
+import Skeleton from '../../ui/utils/skeleton';
 function Header(props){
     const {topAnime}=props
     const [isFirst,setIsFirst]=useState(true)
@@ -34,7 +36,9 @@ function Header(props){
             {topAnime.slice(0,4).map((item,index)=>{
                 return(
                     <SwiperSlide key={index} >
-                        <CardHeader item={item}></CardHeader>
+                        <Suspense fallback={<Skeleton></Skeleton>}>
+                            <CardHeader item={item}></CardHeader>
+                        </Suspense>
                     </SwiperSlide>
                 )
             })}
