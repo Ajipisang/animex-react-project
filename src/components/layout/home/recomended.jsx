@@ -10,7 +10,7 @@ function Recomended(props){
     const {topAnime}=props
     
     return(
-        <section className="mt-12 min-h-[400px]  flex flex-col gap-5 px-4">
+        <section className="mt-12 min-h-[300px]  flex flex-col gap-5 px-4">
             <div className="flex gap-3 items-center text-white">
             <FaFire className="text-2xl" />
             <h1 className="text-2xl font-semibold">Trending</h1>
@@ -25,11 +25,11 @@ function Recomended(props){
                 >
                   {topAnime.slice(0,10).map((item,index)=>{
                     return(
+                        <Suspense fallback={<Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>}>
                         <SwiperSlide>
-                            <Suspense fallback={<Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>}>
                                 <CardRecomend item={item}></CardRecomend>
-                            </Suspense>
                         </SwiperSlide>
+                        </Suspense>
                     )
                   })}
                 </Swiper>

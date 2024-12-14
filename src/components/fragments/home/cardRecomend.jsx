@@ -20,6 +20,7 @@ function CardRecomend({item}) {
       <h1 className="max-w-[160px] text-white">
        {item.title.length > 18 ? item.title.slice(0, 18) + "..." : item.title}
       </h1>
+      <h1 className="leading-[10px] text-[rgba(229,229,229,0.8)]">{item.year}</h1>
     </div>
   );
 }

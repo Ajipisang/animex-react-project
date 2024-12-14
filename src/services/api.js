@@ -1,28 +1,37 @@
 import axios from "axios";
+import _ from 'lodash';
+import Bottleneck from "bottleneck";
 
 
+const limiter=new Bottleneck({
+    maxConcurrent: 1,
+    minTime: 1000
+})
 
-export const getTopAnime=async(callback)=>{
-    try{
-        axios.get("https://api.jikan.moe/v4/seasons/now").then(res => callback(res.data)).catch(err=>console.log(err));
-    }catch (err){
-        console.log(err);
-    }
-}
-
-
-export const getRecomended = async (callback) => {
+const handleRequest = async (url, callback) => {
     try {
-        // Membuat fungsi debounced untuk API call
-        const debouncedCallback = debounce(() => {
-            axios.get("https://api.jikan.moe/v4/recommendations/anime")
-                .then(res => callback(res.data))
-                .catch(err => console.log(err));
-        }, 500); // Tunggu 500ms setelah pemanggilan terakhir
-
-        // Panggil fungsi debounced
-        debouncedCallback();
+      await limiter.schedule(() =>
+        axios.get(url)
+          .then((res) => callback(res.data))
+          .catch((err) => {
+            if (err.response && err.response.status === 429) {
+              setTimeout(() => handleRequest(url, callback), 1000);
+            } else {
+              console.error(err);
+            }
+          })
+      );
     } catch (err) {
-        console.log(err);
+      console.error(err);
     }
-};
+  };
+  
+  // Fetch data untuk rekomendasi
+  export const getRecomended = (callback) => {
+    handleRequest("https://api.jikan.moe/v4/recommendations/anime", callback);
+  };
+  
+  // Fetch data untuk top anime
+  export const getTopAnime = (callback) => {
+    handleRequest("https://api.jikan.moe/v4/seasons/now", callback);
+  };
