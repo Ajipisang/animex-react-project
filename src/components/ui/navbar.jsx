@@ -9,20 +9,29 @@ function NavBar(){
     const icons=[
         {
             icon:<FaHome />,
+            title:"Home"
         },
         {
-            icon:<CiSearch  />
+            icon:<CiSearch  />,
+            title:"Search" 
         },
         {
-            icon:<CiBookmark  />
+            icon:<CiBookmark  />,
+            title:"Bookmark"
         },
         {
-            icon:<CgProfile  />
+            icon:<CgProfile  />,
+            title:"Profile"
         }
     ]
     return(
         <nav className="w-full px-9  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
-           {icons.map((icon,index)=><span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>)}
+           {icons.map((icon,index)=>
+           <div className="relative ">
+                <span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>
+                <p className={`text-white text-sm ${activeIndex===index ? 'opacity-100 z-20 absolute top-[35px] left-1/2 -translate-x-1/2' : 'opacity-0 translate-y-4'}  transition-all ease-in-out duration-300`}>{icon.title}</p>
+           </div>
+           )}
         </nav>
     )
 }
