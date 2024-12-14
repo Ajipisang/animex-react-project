@@ -35,7 +35,6 @@ function Header(props){
                 return(
                     <SwiperSlide key={index} >
                         <CardHeader item={item}></CardHeader>
-        
                     </SwiperSlide>
                 )
             })}

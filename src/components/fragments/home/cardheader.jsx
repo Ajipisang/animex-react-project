@@ -13,7 +13,7 @@ function CardHeader({item}){
                           <div className="w-[350px]  h-auto gap-2 z-30   flex flex-col justify-between">
                          
                             <h1 className="text-2xl font-semibold">{item.title} ({item.year})</h1>
-                            <div  className="w-full text-white capitalize font-thin  text-[17px] flex justify-between">
+                            <div  className="w-full px-4 text-white capitalize font-thin  text-[17px] flex justify-between">
                                 {item.genres.map((item,index)=>{
                                     return(
                                         <h1 key={index}>{item.name}</h1>
