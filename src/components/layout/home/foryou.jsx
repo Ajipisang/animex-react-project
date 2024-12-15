@@ -7,8 +7,8 @@ import { Suspense } from "react";
 import Skeleton from "../../ui/utils/skeleton";
 function ForYou({ recomended }) {
   return (
-    <div className="w-full  z-10 h-[300px] mb-12 flex p-0  flex-col items-center">
-      <h1 className="text-2xl text-white font-semibold capitalize">for You</h1>
+    <div className="w-full  z-10 h-[300px] mb-12 flex p-0 mt-3  flex-col items-center">
+      <h1 className="text-2xl text-white font-semibold z-20 capitalize">for You</h1>
 
       <div className="w-full mt-2 h-auto">
         <Swiper
@@ -26,6 +26,7 @@ function ForYou({ recomended }) {
           }}
           pagination={{
             dynamicBullets: true,
+            
           }}
           modules={[EffectCoverflow, Pagination]}
         >
@@ -44,9 +45,10 @@ function ForYou({ recomended }) {
               </Suspense>
             );
           })}
-          {!recomended && <Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>}
+          {recomended==null && <Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>}
         </Swiper>
       </div>
+     
     </div>
   );
 }
