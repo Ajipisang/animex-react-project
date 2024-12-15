@@ -32,6 +32,8 @@ function Recomended(props){
                         </Suspense>
                     )
                   })}
+
+                  {!topAnime?<Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>:null}
                 </Swiper>
 
                

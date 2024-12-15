@@ -44,6 +44,7 @@ function ForYou({ recomended }) {
               </Suspense>
             );
           })}
+          {!recomended && <Skeleton width={"w-full"} height={"h-[250px]"}></Skeleton>}
         </Swiper>
       </div>
     </div>
