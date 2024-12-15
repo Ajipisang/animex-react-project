@@ -53,7 +53,7 @@ function CardHeader({ item }) {
   return (
     <>
       <section
-        className="w-full lg:hidden text-white flex flex-col justify-end lg:justify-center lg:items-start lg:px-8 items-center lg:h-[600px] h-[450px] bg-header relative"
+        className="w-full lg:hidden z-10  text-white flex flex-col justify-end lg:justify-center lg:items-start lg:px-8 items-center lg:h-[600px] h-[450px] bg-header relative"
         style={{
           background: `url(${item.images.jpg.large_image_url})`,
           backgroundSize: "cover",
@@ -89,9 +89,9 @@ function CardHeader({ item }) {
         </div>
       </section>
 
-      <section className="hidden lg:flex w-full gap-2 h-[600px] ">
-        <div className="min-w-[500px] relative flex flex-col justify-center px-9 h-full">
-         <div className="w-[900px] z-30 absolute gap-3 flex flex-col justify-center h-3/4 ">
+      <section className="hidden  lg:flex z-10  w-full  h-[550px] ">
+        <div className="min-w-[550px] relative flex flex-col justify-center px-[100px] h-full">
+         <div className="w-[700px] z-30 absolute gap-3 flex flex-col justify-center h-3/4 ">
             <h1 className="text-6xl  text-white font-thin">{item.title}</h1>
 
             <div className="w-auto items-center flex gap-4 text-sm h-[40px]">
@@ -148,8 +148,8 @@ function CardHeader({ item }) {
         </div>
 
 
-        <div className="w-full h-full relative bg-header3  ">
-            <div className="w-full bottom-[-12px] left-0  absolute  bgOverlay2  bg-black opacity-40 "></div>
+        <div className="w-full h-full relative   bg-header3  ">
+           
             <img src={item.images.jpg.large_image_url} className="w-full h-full object-cover object-center"></img>
         </div>
       </section>

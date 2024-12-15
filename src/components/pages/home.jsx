@@ -26,7 +26,9 @@ function Home(){
     
     
     return(
-        <div className="min-h-screen overflow-x-hidden relative bg-purpleLight">
+        <div className="min-h-screen    bg-purpleLight">
+            <NavBar></NavBar>
+
             <Header topAnime={topAnime} ></Header>
             {/* <NavBar></NavBar>
             <Recomended topAnime={topAnime}></Recomended>

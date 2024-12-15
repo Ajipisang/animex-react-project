@@ -4,6 +4,7 @@ import { CiBookmark } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { FaRegCompass } from "react-icons/fa6";
 import { useState } from "react";
+import { CiLogin } from "react-icons/ci";
 function NavBar(){
     const [activeIndex,setActiveIndex]=useState(0)
     const icons=[
@@ -25,7 +26,8 @@ function NavBar(){
         }
     ]
     return(
-        <nav className="w-full px-9 z-20  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
+        <>
+        <nav className="w-full lg:hidden px-9 z-20  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
            {icons.map((icon,index)=>
            <div className="relative ">
                 <span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>
@@ -33,6 +35,25 @@ function NavBar(){
            </div>
            )}
         </nav>
+        <nav className="md:flex lg:flex px-9 w-full h-[50px]   items-center justify-between hidden bg-purpleSemiDark">
+            <h1 className="text-2xl text-white">AnimeX.</h1>
+
+            <div className="w-[400px] flex justify-between items-center h-full ">
+                {icons.map((icon,index)=>
+                <div className="relative cursor-pointer flex gap-2">
+                    <span key={index} className="text-xl text-white">{icon.icon}</span>
+                    <p className="text-white text-sm ">{icon.title}</p>
+                </div>
+                )}
+            </div>
+
+            <div className="w-[90px] cursor-pointer h-3/5 flex gap-2 items-center rounded-lg px-2 bg-amber-600">
+            <CiLogin className="text-xl text-white"/>
+            <h1 className="text-white">Login</h1>
+            </div>
+
+        </nav>
+        </>
     )
 }
 
