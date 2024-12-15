@@ -92,7 +92,7 @@ function CardHeader({ item }) {
       <section className="hidden  lg:flex z-10  w-full  h-[550px] ">
         <div className="min-w-[550px] relative flex flex-col justify-center px-[100px] h-full">
          <div className="w-[700px] z-30 absolute gap-3 flex flex-col justify-center h-3/4 ">
-            <h1 className="text-6xl  text-white font-thin">{item.title}</h1>
+            <h1 className="text-4xl  text-white font-thin">{item.title}</h1>
 
             <div className="w-auto items-center flex gap-4 text-sm h-[40px]">
 
@@ -125,7 +125,7 @@ function CardHeader({ item }) {
 
             </div>
 
-            <h2 className="text-white font-thin text-[17px] mt-2" >{item.synopsis.substring(0,320)+" ..."}</h2>
+            <h2 className="text-white font-thin text-[14px] mt-2" >{item.synopsis.substring(0,320)+" ..."}</h2>
 
 
             <div className="w-auto items-center flex gap-4 text-sm h-[40px]  ">
