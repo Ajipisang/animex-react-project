@@ -26,15 +26,22 @@ function Home(){
     
     
     return(
-        <div className="min-h-screen    bg-purpleLight">
-            <NavBar></NavBar>
+        <>
+        <NavBar></NavBar>
+
+        <div className="min-h-screen pb-12 overflow-x-hidden relative  bg-purpleLight">
 
             <Header topAnime={topAnime} ></Header>
+            <Recomended topAnime={topAnime}></Recomended>
+            <div className="w-[400px] h-[400px] absolute top-1/3  -right-[120px] z-0 rounded-full transparent border-[20px] border-white">
+
+            </div>
             {/* <NavBar></NavBar>
             <Recomended topAnime={topAnime}></Recomended>
             <ForYou recomended={recomended}></ForYou> */}
             {/* <div className="w-[900px] lg:w-full lg:-bottom-1/4  h-[250px] left-1/2 -translate-x-1/2 rotate-12 bg-purpleSemiDark blur-3xl opacity-75 absolute bottom-1/4"></div> */}
         </div>
+        </>
     )
 }
 

@@ -1,8 +1,8 @@
 import { FaStar } from "react-icons/fa";
 function CardRecomend({item}) {
   return (
-    <div className="max-w-[160px] h-full flex flex-col gap-1">
-      <div className="w-full shadow-xl h-[220px] overflow-hidden relative rounded-xl ">
+    <div className="max-w-[160px] lg:max-w-[200px]  h-full flex flex-col gap-1">
+      <div className="w-full shadow-xl lg:h-[250px] h-[220px] overflow-hidden relative rounded-xl ">
         <img
           src={item.images.jpg.image_url}
           className="w-full h-full object-cover"

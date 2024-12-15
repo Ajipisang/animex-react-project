@@ -27,7 +27,7 @@ function NavBar(){
     ]
     return(
         <>
-        <nav className="w-full lg:hidden px-9 z-20  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
+        <nav className="w-full lg:hidden px-9  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
            {icons.map((icon,index)=>
            <div className="relative ">
                 <span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>
@@ -35,7 +35,7 @@ function NavBar(){
            </div>
            )}
         </nav>
-        <nav className="md:flex lg:flex px-9 w-full h-[50px]   items-center justify-between hidden bg-purpleSemiDark">
+        <nav className="md:flex sticky z-50 top-0 lg:flex px-9 w-full h-[50px]   items-center justify-between hidden bg-purpleSemiDark">
             <h1 className="text-2xl text-white">AnimeX.</h1>
 
             <div className="w-[400px] flex justify-between items-center h-full ">
