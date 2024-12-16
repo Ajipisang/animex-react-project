@@ -33,8 +33,7 @@ function Home(){
 
             <Header topAnime={topAnime} ></Header>
             <Recomended topAnime={topAnime}></Recomended>
-            <div className="w-[400px] h-[400px] absolute top-1/3  -right-[120px] z-0 rounded-full transparent border-[20px] border-white">
-            </div>
+            
             <ForYou recomended={recomended}></ForYou>
 
             {/* <NavBar></NavBar>
