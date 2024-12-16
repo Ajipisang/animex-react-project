@@ -14,14 +14,17 @@ import Rank from "../layout/home/rank"
 import { getTopAnimes } from "../../services/api"
 import { getTopManga } from "../../services/api"
 import { getTopCharacters } from "../../services/api"
+import Movie from "../layout/home/movie"
 import { get } from "lodash"
+import { getTopMovie } from "../../services/api"
 function Home(){
-    const [topAnime,setTopAnime]=useState([])
-    const [recomended,setRecomended]=useState([])
-    const [genres,setGenres]=useState([])
-    const [topAnimes,setTopAnimes]=useState([])
-    const [topManga,setTopManga]=useState([])
-    const [topChar,setTopChar]=useState([])
+    const [topAnime,setTopAnime]=useState([]);
+    const [recomended,setRecomended]=useState([]);
+    const [genres,setGenres]=useState([]);
+    const [topAnimes,setTopAnimes]=useState([]);
+    const [topManga,setTopManga]=useState([]);
+    const [topChar,setTopChar]=useState([]);
+    const [topMovie,setTopMovie]=useState([]);
     useEffect(()=>{
         getTopAnimes(res=>
             startTransition(()=>{
@@ -42,6 +45,15 @@ function Home(){
                 setTopChar(res.data)
             })        
         )
+
+        getTopMovie(res=>
+            startTransition(()=>{
+                setTopMovie(res.data)
+            })        
+        )
+
+
+        
     },[])
 
     useEffect(()=>{
@@ -94,6 +106,7 @@ function Home(){
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
             <Genre genres={genres}></Genre>
             <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
+            <Movie topMovie={topMovie}></Movie>
            
 
             {/* <NavBar></NavBar>
