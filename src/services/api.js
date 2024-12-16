@@ -39,3 +39,16 @@ const handleRequest = async (url, callback) => {
   export const getGenres=(callback)=>{
     handleRequest("https://api.jikan.moe/v4/genres/anime",callback);
   }
+
+
+  export const getTopAnimes=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/top/anime",callback)
+  }
+
+  export const getTopManga=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/top/manga",callback)
+  }
+
+  export const getTopCharacters=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/top/characters",callback)
+  } 

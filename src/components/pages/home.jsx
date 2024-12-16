@@ -10,10 +10,39 @@ import { FaFire } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa"
 import { getGenres } from "../../services/api"
 import Genre from "../layout/home/genre"
+import Rank from "../layout/home/rank"
+import { getTopAnimes } from "../../services/api"
+import { getTopManga } from "../../services/api"
+import { getTopCharacters } from "../../services/api"
+import { get } from "lodash"
 function Home(){
     const [topAnime,setTopAnime]=useState([])
     const [recomended,setRecomended]=useState([])
     const [genres,setGenres]=useState([])
+    const [topAnimes,setTopAnimes]=useState([])
+    const [topManga,setTopManga]=useState([])
+    const [topChar,setTopChar]=useState([])
+    useEffect(()=>{
+        getTopAnimes(res=>
+            startTransition(()=>{
+                setTopAnimes(res.data)
+            })
+        )
+    },[])
+
+    useEffect(()=>{
+        getTopManga(res=>
+            startTransition(()=>{
+                setTopManga(res.data)
+            })
+        )
+
+        getTopCharacters(res=>
+            startTransition(()=>{
+                setTopChar(res.data)
+            })        
+        )
+    },[])
 
     useEffect(()=>{
         getGenres(res=>
@@ -22,6 +51,7 @@ function Home(){
             })
         )
     },[])
+
 
     useEffect(()=>{
         getTopAnime(res=>
@@ -63,6 +93,7 @@ function Home(){
             <Recomended topAnime={topAnime} title="Trending" nav="2" icon={<FaFire />}></Recomended>
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
             <Genre genres={genres}></Genre>
+            <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
            
 
             {/* <NavBar></NavBar>
