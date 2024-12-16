@@ -18,8 +18,8 @@ function Header(props) {
     <>
       <Swiper
         navigation={{
-          prevEl: "#prevButton",
-          nextEl: "#nextButton",
+          prevEl: "#prevButton1",
+          nextEl: "#nextButton1",
         }}
         modules={[Navigation]}
         onSlideChange={(swiper) => {
@@ -30,14 +30,14 @@ function Header(props) {
         className="mySwiper relative"
       >
         <div className="w-full h-full flex justify-between absolute top-1/2 left-0 z-10 ">
-          <span id="prevButton">
+          <span id="prevButton1">
             <IoIosArrowBack
               className={`w-[30px] ${
                 isFirst ? "opacity-0 translate-x-[-30px]" : "opacity-100"
               } transition-all ease-in-out duration-300 h-[30px] text-white z-20`}
             />
           </span>
-          <span id="nextButton">
+          <span id="nextButton1">
             <IoIosArrowForward
               className={`w-[30px] ${
                 isLast ? "opacity-0 translate-x-[30px]" : "opacity-100"

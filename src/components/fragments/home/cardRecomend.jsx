@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa";
 function CardRecomend({item}) {
   return (
-    <div className="max-w-[160px] lg:max-w-[200px]  h-full flex flex-col gap-1">
+    <div className="max-w-[170px] lg:max-w-[200px]  h-full flex flex-col gap-1">
       <div className="w-full shadow-xl lg:h-[250px] h-[220px] overflow-hidden relative rounded-xl ">
         <img
           src={item.images.jpg.image_url}
@@ -20,7 +20,7 @@ function CardRecomend({item}) {
       <h1 className="max-w-[160px] text-white">
        {item.title.length > 18 ? item.title.slice(0, 18) + "..." : item.title}
       </h1>
-      <h1 className="leading-[15px] text-[rgba(229,229,229,0.8)]">{item.year}</h1>
+      <h1 className="leading-[15px] text-sm text-[rgba(229,229,229,0.7)]">{item.year}</h1>
     </div>
   );
 }

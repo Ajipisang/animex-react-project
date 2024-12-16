@@ -12,9 +12,10 @@ import { Navigation } from "swiper/modules";
 const CardRecomend = React.lazy(() =>
   import("../../fragments/home/cardRecomend")
 );
-
 import { useState, useEffect } from "react";
 function Recomended(props) {
+  const [isFirst, setIsFirst] = useState(true);
+  const [isLast, setIsLast] = useState(false);
   const { topAnime } = props;
   const [index,setIndex]=useState(0)
   useEffect(()=>{
@@ -38,11 +39,16 @@ function Recomended(props) {
 
       <div className="flex w-full relative ">
         <div className="w-full flex z-20 justify-between h-[40px] absolute top-1/3 text-white   items-center text-3xl">
-        <IoIosArrowBack id="prevButton" className="bg-[rgba(0,0,0,0.7)] cursor-pointer  "/>
-        <IoIosArrowForward id="nextButton" className="bg-[rgba(0,0,0,0.7)]  cursor-pointer"/>
+        <IoIosArrowBack id="prevButton" className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isFirst && "opacity-0 translate-x-3"} transition-all ease-in-out duration-300 `}/>
+        <IoIosArrowForward id="nextButton" className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isLast && "opacity-0 -translate-x-3"} transition-all ease-in-out duration-300 `}/>
         </div>
         <Swiper 
         slidesPerView={2} 
+        spaceBetween={30}
+        onSlideChange={(swiper) => {
+          setIsFirst(swiper.isBeginning);
+          setIsLast(swiper.isEnd);
+        }}
         navigation={
             {
               prevEl: "#prevButton",
@@ -52,7 +58,7 @@ function Recomended(props) {
         breakpoints={{
           640: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 50,
           },
           768: {
             slidesPerView: 3,
@@ -64,10 +70,7 @@ function Recomended(props) {
           },
         }}
         modules={[Navigation]}
-        onSlideChange={(swiper) => {
-            setActiveIndex(swiper.realIndex); // Update state dengan indeks aktif
-          }}
-        
+  
         className="mySwiper">
           {topAnime.slice(0, 10).map((item, index) => {
             return (
