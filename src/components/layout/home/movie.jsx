@@ -9,28 +9,31 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { Navigation } from "swiper/modules";
 import { useRef,useEffect,useState} from "react";
 function Movie(props) {
-    const { topMovie } = props;
+    const { topMovie,title,variant,icon,isHide } = props;
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const [isEnd, setIsEnd] = useState(false);
     const [isBeginning, setIsBeginning] = useState(true);
     useEffect(() => {
       // Pastikan referensi diatur setelah DOM selesai dirender
-      prevRef.current = document.getElementById('prevButton');
-      nextRef.current = document.getElementById('nextButton');
-    }, []);
+      prevRef.current = document.getElementById(`prevButton${variant}`);
+      nextRef.current = document.getElementById(`nextButton${variant}`);
+    }, [variant]);
   
     return (
       <div className="w-full px-5 h-full mt-9">
         <div className="w-full items-center flex justify-between">
           <div className="flex items-center gap-1">
-            <MdLocalMovies className="text-white text-3xl" />
-            <h1 className="text-white text-2xl">Movies</h1>
+            <span  className="text-white text-3xl">
+             {icon}
+            </span>
+            
+            <h1 className="text-white text-2xl">{title}</h1>
           </div>
   
           <div className="flex gap-2 items-center text-white text-xl">
-            <IoArrowBackCircle className={`${isBeginning && "opacity-50"}`} id="prevButton" />
-            <IoArrowForwardCircleSharp  className={`${isEnd && "opacity-50"}`} id="nextButton" />
+            <IoArrowBackCircle className={`${isBeginning && "opacity-50"}`} id={`prevButton${variant}`} />
+            <IoArrowForwardCircleSharp  className={`${isEnd && "opacity-50"}`} id={`nextButton${variant}`} />
           </div>
         </div>
   
@@ -52,14 +55,14 @@ function Movie(props) {
           >
             {topMovie.slice(0, 10).map((item, index) => (
               <SwiperSlide key={index}>
-                <MovieCard item={item} />
+                <MovieCard isHide={isHide} item={item} />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
   
-        <div className="flex gap-2 mt-4 items-center justify-center text-white text-xl opacity-50 text-center">
-          <h1 className="r ">discover more</h1>
+        <div className="flex gap-2 mt-2 items-center justify-start text-white text-xl opacity-50 text-start">
+          <h1 className=" ">discover more</h1>
           <IoIosArrowForward className="text-white " />
         </div>
       </div>

@@ -1,10 +1,13 @@
 import { FaRankingStar } from "react-icons/fa6";
 import TopAnimeCard from "../../fragments/home/topanimecard";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 function Rank({topAnimes,topManga,topChar}){
     const [activeData, setActiveData] = useState("Anime");
     const [activePage, setActivePage] = useState(5);
     const [dataView, setDataView] = useState(topAnimes);
+    useEffect(()=>{
+        setDataView(topAnimes);
+    },[topAnimes])
     const handleClick=()=>{
         setActivePage(activePage+5);
         if(activePage == 10){

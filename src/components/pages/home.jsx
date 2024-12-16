@@ -17,6 +17,9 @@ import { getTopCharacters } from "../../services/api"
 import Movie from "../layout/home/movie"
 import { get } from "lodash"
 import { getTopMovie } from "../../services/api"
+import { upcoming } from "../../services/api"
+import { MdLocalMovies } from "react-icons/md";
+import { MdAccessTimeFilled } from "react-icons/md";
 function Home(){
     const [topAnime,setTopAnime]=useState([]);
     const [recomended,setRecomended]=useState([]);
@@ -25,6 +28,7 @@ function Home(){
     const [topManga,setTopManga]=useState([]);
     const [topChar,setTopChar]=useState([]);
     const [topMovie,setTopMovie]=useState([]);
+    const [upcomings,setUpcoming]=useState([]);
     useEffect(()=>{
         getTopAnimes(res=>
             startTransition(()=>{
@@ -51,6 +55,14 @@ function Home(){
                 setTopMovie(res.data)
             })        
         )
+
+        upcoming(res=>{
+            startTransition(()=>{
+                setUpcoming(res.data)
+            })
+        })
+        
+        
 
 
         
@@ -106,7 +118,8 @@ function Home(){
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
             <Genre genres={genres}></Genre>
             <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
-            <Movie topMovie={topMovie}></Movie>
+            <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
+            <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<MdAccessTimeFilled />}></Movie>
            
 
             {/* <NavBar></NavBar>
