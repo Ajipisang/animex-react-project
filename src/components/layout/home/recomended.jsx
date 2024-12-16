@@ -1,5 +1,4 @@
 import { FaThumbsUp } from "react-icons/fa";
-import { FaFire } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,7 +15,7 @@ import { useState, useEffect } from "react";
 function Recomended(props) {
   const [isFirst, setIsFirst] = useState(true);
   const [isLast, setIsLast] = useState(false);
-  const { topAnime } = props;
+  const { topAnime,title,nav,icon } = props;
   const [index,setIndex]=useState(0)
   useEffect(()=>{
     console.log(index)
@@ -25,8 +24,11 @@ function Recomended(props) {
     <section className="mt-12 lg:px-[100px] min-h-[300px]   flex flex-col gap-5 px-4">
       <div className="w-full  flex justify-between h-[30px]">
         <div className="flex h-full gap-3 items-center text-white">
-          <FaFire className="text-2xl lg:text-3xl" />
-          <h1 className="text-2xl lg:text-3xl font-semibold">Trending</h1>
+          <span className="text-2xl lg:text-3xl">
+            {icon}
+          </span>
+      
+          <h1 className="text-2xl lg:text-3xl font-semibold capitalize">{title}</h1>
         </div>
 
         <div className="flex h-full  gap-1 items-center">
@@ -39,8 +41,8 @@ function Recomended(props) {
 
       <div className="flex w-full relative ">
         <div className="w-full flex z-20 justify-between h-[40px] absolute top-1/3 text-white   items-center text-3xl">
-        <IoIosArrowBack id="prevButton" className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isFirst && "opacity-0 translate-x-3"} transition-all ease-in-out duration-300 `}/>
-        <IoIosArrowForward id="nextButton" className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isLast && "opacity-0 -translate-x-3"} transition-all ease-in-out duration-300 `}/>
+        <IoIosArrowBack id={`prevButton${nav}`} className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isFirst && "opacity-0 translate-x-3"} transition-all ease-in-out duration-300 `}/>
+        <IoIosArrowForward id={`nextButton${nav}`} className={`bg-[rgba(0,0,0,0.7)] cursor-pointer  ${isLast && "opacity-0 -translate-x-3"} transition-all ease-in-out duration-300 `}/>
         </div>
         <Swiper 
         slidesPerView={2} 
@@ -51,8 +53,8 @@ function Recomended(props) {
         }}
         navigation={
             {
-              prevEl: "#prevButton",
-              nextEl: "#nextButton",
+              prevEl: `#prevButton${nav}`,
+              nextEl: `#nextButton${nav}`,
             }
         }
         breakpoints={{

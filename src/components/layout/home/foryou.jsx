@@ -14,10 +14,10 @@ function ForYou({ recomended }) {
 
       <div className="w-full  lg:px-12 px-5 mt-2 h-auto">
         <Swiper
-          effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={3}
+          slidesPerView={2}
+          spaceBetween={20}
           loop={true}
           breakpoints={{
             640: {
@@ -33,14 +33,7 @@ function ForYou({ recomended }) {
               spaceBetween: 50,
             },
           }}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 90,
-            modifier: 2.5,
-            slideShadows: true,
-            className: "mySwiper flex  ",
-          }}
+      
           pagination={{
             dynamicBullets: true,
             
@@ -55,7 +48,7 @@ function ForYou({ recomended }) {
                 }
               >
                 <SwiperSlide>
-                  <div className="w-auto shadow-lg h-auto rounded-lg overflow-hidden ">
+                  <div className="w-auto shadow-lg h-[250px] rounded-lg overflow-hidden ">
                     <img src={item.entry[0].images.jpg.image_url}></img>
                   </div>
                 </SwiperSlide>

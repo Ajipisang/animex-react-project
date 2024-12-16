@@ -6,6 +6,9 @@ import Recomended from "../layout/home/recomended"
 import ForYou from "../layout/home/foryou"
 import { getRecomended } from "../../services/api"
 import { startTransition } from "react"
+import { FaFire } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa"
+
 function Home(){
     const [topAnime,setTopAnime]=useState([])
     const [recomended,setRecomended]=useState([])
@@ -18,10 +21,24 @@ function Home(){
     },[])
 
 
-    useEffect(()=>{
-        getRecomended(res=>setRecomended(res.data))
+       useEffect(()=>{
+        getRecomended(res=>
+            startTransition(()=>{
+                setRecomended(res.data)
+                
+            })
+        )
     },[])
-   
+
+    {console.log(recomended)}
+
+
+    if(!topAnime && recomended==undefined){
+        return(
+            <h1>loading</h1>
+        )
+    }
+
 
     
     
@@ -32,9 +49,10 @@ function Home(){
         <div className="min-h-screen pb-12 overflow-x-hidden relative  bg-purpleLight">
 
             <Header topAnime={topAnime} ></Header>
-            <Recomended topAnime={topAnime}></Recomended>
+            <Recomended topAnime={topAnime} title="Trending" nav="2" icon={<FaFire />}></Recomended>
+            <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
             
-            <ForYou recomended={recomended}></ForYou>
+           
 
             {/* <NavBar></NavBar>
             <Recomended topAnime={topAnime}></Recomended>
