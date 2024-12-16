@@ -8,10 +8,21 @@ import { getRecomended } from "../../services/api"
 import { startTransition } from "react"
 import { FaFire } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa"
-
+import { getGenres } from "../../services/api"
+import Genre from "../layout/home/genre"
 function Home(){
     const [topAnime,setTopAnime]=useState([])
     const [recomended,setRecomended]=useState([])
+    const [genres,setGenres]=useState([])
+
+    useEffect(()=>{
+        getGenres(res=>
+            startTransition(()=>{
+                setGenres(res.data)
+            })
+        )
+    },[])
+
     useEffect(()=>{
         getTopAnime(res=>
             startTransition(()=>{
@@ -51,7 +62,7 @@ function Home(){
             <Header topAnime={topAnime} ></Header>
             <Recomended topAnime={topAnime} title="Trending" nav="2" icon={<FaFire />}></Recomended>
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
-            
+            <Genre genres={genres}></Genre>
            
 
             {/* <NavBar></NavBar>

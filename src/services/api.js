@@ -35,3 +35,7 @@ const handleRequest = async (url, callback) => {
   export const getTopAnime = (callback) => {
     handleRequest("https://api.jikan.moe/v4/seasons/now", callback);
   };
+
+  export const getGenres=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/genres/anime",callback);
+  }
