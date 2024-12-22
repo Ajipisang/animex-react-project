@@ -20,6 +20,9 @@ import { getTopMovie } from "../../services/api"
 import { upcoming } from "../../services/api"
 import { MdLocalMovies } from "react-icons/md";
 import { MdAccessTimeFilled } from "react-icons/md";
+import { topOva } from "../../services/api"
+import { RiMovieAiFill } from "react-icons/ri";
+import { special } from "../../services/api"
 function Home(){
     const [topAnime,setTopAnime]=useState([]);
     const [recomended,setRecomended]=useState([]);
@@ -29,6 +32,8 @@ function Home(){
     const [topChar,setTopChar]=useState([]);
     const [topMovie,setTopMovie]=useState([]);
     const [upcomings,setUpcoming]=useState([]);
+    const [topOvas,setTopOvas]=useState([]);
+    const [spec,setSpec]=useState([]);
     useEffect(()=>{
         getTopAnimes(res=>
             startTransition(()=>{
@@ -56,11 +61,24 @@ function Home(){
             })        
         )
 
+        topOva(res=>
+            startTransition(()=>{
+                setTopOvas(res.data)
+            })        
+        )
+
         upcoming(res=>{
             startTransition(()=>{
                 setUpcoming(res.data)
             })
         })
+
+        special(res=>{
+            startTransition(()=>{
+                setSpec(res.data)
+            })
+        })
+        
         
         
 
@@ -116,10 +134,37 @@ function Home(){
             <Header topAnime={topAnime} ></Header>
             <Recomended topAnime={topAnime} title="Trending" nav="2" icon={<FaFire />}></Recomended>
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
-            <Genre genres={genres}></Genre>
-            <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
-            <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
-            <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<MdAccessTimeFilled />}></Movie>
+            <div className="lg:flex hidden flex-col  lg:flex-row lg:w-full px-9 mx-auto ">
+                <div className="lg:max-w-1/4 h-auto">
+                    <Genre genres={genres}></Genre>
+                    <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
+                </div>
+
+                <div className="flex flex-col w-full lg:w-[900px] ">
+                    <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
+                    <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<MdAccessTimeFilled />}></Movie>
+             
+                    <Movie topMovie={topOvas} title="ovas" variant="5" isHide={false} icon={<RiMovieAiFill />}></Movie>
+
+                    <Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<RiMovieAiFill />}></Movie>
+
+
+                   
+
+                </div>
+
+            
+            
+           
+            </div>
+
+            <div className="lg:hidden">
+                    <Genre genres={genres}></Genre>
+                    <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
+                    <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
+                    <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<RiMovieAiFill />}></Movie>
+            </div>
+           
            
 
             {/* <NavBar></NavBar>

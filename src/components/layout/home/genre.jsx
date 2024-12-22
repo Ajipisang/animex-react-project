@@ -18,7 +18,7 @@ function Genre(props){
             <h1 className="text-white text-2xl capitalize font-semibold">genres</h1>
             <div className="w-full transition-all duration-300 ease-in-out  shadow-lg p-5 bg-purpleSemiDark rounded-lg h-full" >
 
-                <div className="flex justify-start gap-y-4 flex-wrap gap-2">
+                <div className="flex justify-start gap-y-4 h-[200px] overflow-scroll flex-wrap gap-2">
                     {genres.slice(0,show).map((item,index)=><CardGenres key={item.mal_id} item={item} index={index}></CardGenres>)}
                 </div>
 

@@ -60,3 +60,11 @@ const handleRequest = async (url, callback) => {
   export const upcoming=(callback)=>{
     handleRequest("https://api.jikan.moe/v4/seasons/upcoming",callback)
   }
+
+  export const topOva=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/top/anime?type=ova",callback)
+  }
+
+  export const special=(callback)=>{
+    handleRequest("https://api.jikan.moe/v4/top/anime?type=special&filter=favorite",callback)
+  }
