@@ -106,7 +106,7 @@ function CardHeader({ item }) {
             })}
 
 
-            <div className="w-auto bg-red-600 flex items-center text-white rounded-sm p-1">
+            <div className={`w-auto ${item.rating =="R - 17+ (violence & profanity)" ? "bg-red-600" : "bg-green-600"}  flex items-center text-white rounded-[8px] p-1 px-2`}>
                 <h1>{item.rating}</h1>
             </div>
 
@@ -150,7 +150,7 @@ function CardHeader({ item }) {
 
         <div className="w-full h-full relative   bg-header3  ">
            
-            <img src={item.images.jpg.large_image_url} className="w-full h-full object-cover object-center"></img>
+            <img src={item.trailer.images.maximum_image_url} className="w-full h-full object-cover object-center"></img>
         </div>
       </section>
     </>

@@ -45,7 +45,7 @@ function Header(props) {
             />
           </span>
         </div>
-        {topAnime.slice(0, 4).map((item, index) => {
+        {topAnime.slice(0, 8).map((item, index) => {
           return (
             <Suspense
               fallback={

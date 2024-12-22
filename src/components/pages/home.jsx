@@ -23,6 +23,8 @@ import { MdAccessTimeFilled } from "react-icons/md";
 import { topOva } from "../../services/api"
 import { RiMovieAiFill } from "react-icons/ri";
 import { special } from "../../services/api"
+import Loading from "./loading"
+import { GiRainbowStar } from "react-icons/gi";
 function Home(){
     const [topAnime,setTopAnime]=useState([]);
     const [recomended,setRecomended]=useState([]);
@@ -34,6 +36,7 @@ function Home(){
     const [upcomings,setUpcoming]=useState([]);
     const [topOvas,setTopOvas]=useState([]);
     const [spec,setSpec]=useState([]);
+    const [isLoading,setLoading]=useState(true);
     useEffect(()=>{
         getTopAnimes(res=>
             startTransition(()=>{
@@ -116,11 +119,38 @@ function Home(){
     {console.log(recomended)}
 
 
-    if(!topAnime && recomended==undefined){
-        return(
-            <h1>loading</h1>
-        )
-    }
+    useEffect(() => {
+        if (
+          topAnime.length > 0 &&
+          recomended.length > 0 &&
+          genres.length > 0 &&
+          topAnimes.length > 0 &&
+          topManga.length > 0 &&
+          topChar.length > 0 &&
+          topMovie.length > 0 &&
+          upcomings.length > 0 &&
+          topOvas.length > 0 &&
+          spec.length > 0
+        ) {
+          setLoading(false); // set isLoading to false when all data is loaded
+        }
+      }, [
+        topAnime,
+        recomended,
+        genres,
+        topAnimes,
+        topManga,
+        topChar,
+        topMovie,
+        upcomings,
+        topOvas,
+        spec,
+      ]);
+
+      if(isLoading){
+        return <Loading></Loading>
+      }
+
 
 
     
@@ -146,7 +176,7 @@ function Home(){
              
                     <Movie topMovie={topOvas} title="ovas" variant="5" isHide={false} icon={<RiMovieAiFill />}></Movie>
 
-                    <Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<RiMovieAiFill />}></Movie>
+                    <Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<GiRainbowStar />}></Movie>
 
 
                    
@@ -167,10 +197,7 @@ function Home(){
            
            
 
-            {/* <NavBar></NavBar>
-            <Recomended topAnime={topAnime}></Recomended>
-            <ForYou recomended={recomended}></ForYou> */}
-            {/* <div className="w-[900px] lg:w-full lg:-bottom-1/4  h-[250px] left-1/2 -translate-x-1/2 rotate-12 bg-purpleSemiDark blur-3xl opacity-75 absolute bottom-1/4"></div> */}
+       
         </div>
         </>
     )
