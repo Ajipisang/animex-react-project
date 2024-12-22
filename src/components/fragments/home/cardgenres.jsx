@@ -17,7 +17,7 @@ function CardGenres({ item,index }) {
         }
     }
   return (
-    <div className={`w-auto shadow-lg h-[40px] relative flex rounded-xl ${handleColor(index)} capitalize px-5 text-sm overflow-hidden bg-slate-700 z-10`}>
+    <div className={`w-auto shadow-lg cursor-pointer h-[40px] relative flex rounded-xl ${handleColor(index)} capitalize px-5 text-sm overflow-hidden bg-slate-700 z-10`}>
         <h1 className="m-auto z-20">{item.name}</h1>
     </div>
   );

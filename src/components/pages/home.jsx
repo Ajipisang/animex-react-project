@@ -81,8 +81,8 @@ function Home(){
                 setSpec(res.data)
             })
         })
-        
-        
+
+ 
         
 
 
@@ -130,7 +130,8 @@ function Home(){
           topMovie.length > 0 &&
           upcomings.length > 0 &&
           topOvas.length > 0 &&
-          spec.length > 0
+          spec.length > 0 
+
         ) {
           setLoading(false); // set isLoading to false when all data is loaded
         }
@@ -145,6 +146,7 @@ function Home(){
         upcomings,
         topOvas,
         spec,
+       
       ]);
 
       if(isLoading){
@@ -166,7 +168,7 @@ function Home(){
             <Recomended topAnime={recomended} title="Recomended" nav="3" icon={<FaThumbsUp />}></Recomended>
             <div className="lg:flex hidden flex-col  lg:flex-row lg:w-full px-9 mx-auto ">
                 <div className="lg:max-w-1/4 h-auto">
-                    <Genre genres={genres}></Genre>
+                    <Genre genres={genres} setGenres={setGenres} ></Genre>
                     <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
                 </div>
 
@@ -189,7 +191,7 @@ function Home(){
             </div>
 
             <div className="lg:hidden">
-                    <Genre genres={genres}></Genre>
+                    <Genre genres={genres} setGenres={setGenres}></Genre>
                     <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
                     <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
                     <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<RiMovieAiFill />}></Movie>

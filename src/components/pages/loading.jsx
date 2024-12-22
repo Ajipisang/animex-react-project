@@ -5,7 +5,7 @@ function Loading(){
                 <h1>hang in there</h1>
                 <span className="loading loading-dots loading-lg"></span>
             </div>
-            <img src="https://media1.tenor.com/m/LiqhUEDmWcAAAAAC/cute.gif" alt="Funny GIF" width="300"></img>
+            <img src="https://media.tenor.com/bDgdFlOwH0AAAAAi/fire-emblem-maid-fire-emblem.gif" alt="Funny GIF" width="300"></img>
         </div>
     )
 }
