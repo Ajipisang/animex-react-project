@@ -8,6 +8,7 @@ import { useState,useEffect,useRef } from "react";
 import SearchPlaceHolder from "../fragments/searchPlaceholder";
 import { search } from "../../services/api";
 import debounce from "lodash.debounce";
+import { IoCloseSharp } from "react-icons/io5";
 import { IoCompassSharp } from "react-icons/io5";function NavBar(){
     const [activeIndex,setActiveIndex]=useState(0);
     const [isSearch,setIsSearch]=useState(false);
@@ -60,6 +61,11 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
             title:"Profile"
         }
     ]
+    function handleClose(e){
+        setIsSearch(
+            !isSearch
+        )
+    }
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchRef.current && !searchRef.current.contains(event.target) &&
@@ -68,9 +74,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
             }
         };
 
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mouseup", handleClickOutside);
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mouseup", handleClickOutside);
         };
     }, []);
     return(
@@ -98,9 +104,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
 
 
                 <div className="lg:w-auto w-auto flex items-center gap-3 h-full ">
-                    <CiSearch  ref={searchIconRef}  onClick={()=>setIsSearch(
-                        !isSearch
-                    )} className={`text-xl  cursor-pointer ${!isSearch ? "text-white" :"text-amber-500  "} transisision-all ease-in-out duration-300`}/>
+                    <span ref={searchIconRef}  onClick={handleClose
+                    } className={`text-xl  cursor-pointer ${!isSearch ? "text-white" :"text-amber-500  "} transisision-all ease-in-out duration-300`}>{isSearch ? <IoCloseSharp /> : <CiSearch />}</span>
+                    
                     <div className=" w-auto cursor-pointer h-3/5 flex gap-2 items-center rounded-lg px-2 bg-amber-600">
                         <CiLogin className="text-md lg:text-xl text-white"/>
                         <h1 className="text-white hidden lg:block">Login</h1>
