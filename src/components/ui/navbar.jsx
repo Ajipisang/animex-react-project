@@ -17,6 +17,7 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
     const [isQuery,setIsQuery]=useState(false);
     const searchRef=useRef(null);
     const searchIconRef=useRef(null);
+    const inputRef = useRef(null);
     const handleSearch=debounce((e)=>{
         const query=e.target.value;
         if(query.length > 0){
@@ -62,14 +63,12 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
         }
     ]
     function handleClose(e){
-        setIsSearch(
-            !isSearch
-        )
+        setIsSearch(!isSearch)
     }
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchRef.current && !searchRef.current.contains(event.target) &&
-            searchIconRef.current !== event.target ) {
+            !searchIconRef.current.contains(event.target) ) {
                 setIsSearch(false);
             }
         };
@@ -123,8 +122,8 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
 
             <div ref={searchRef} className={`w-[350px] ${isSearch ? "opacity-100 h-[40px]" : "opacity-0 invisible h-0"} rounded-lg left-1/2 -translate-x-1/2 absolute  top-[55px]  flex items-center justify-center z-30 transition-all ease-in-out duration-300  bg-purpleLight`}>
 
-            <div className="relative w-full h-full">
-                <input onChange={handleSearch} type="text" placeholder="ex : naruto" className="w-full h-full outline-none rounded-lg px-3  bg-white text-black"></input>
+            <div ref={inputRef} className="relative w-full h-full">
+                <input  onChange={handleSearch} type="text" placeholder="ex : naruto" className="w-full h-full outline-none rounded-lg px-3  bg-white text-black"></input>
 
                 <div className={`${!isQuery && "hidden"} absolute top-[45px] rounded-lg  bg-slate-200 w-full max-h-[300px] flex flex-col px-2 py-3 gap-2 overflow-y-scroll`}>
 
