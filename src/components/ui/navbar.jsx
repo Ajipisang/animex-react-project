@@ -80,7 +80,7 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
     }, []);
     return(
         <>
-        <nav className="w-full lg:hidden z-20 px-9  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
+        <nav className="w-full lg:hidden z-40 px-9  fixed bottom-0 justify-between  h-16 flex items-center bg-purpleSemiDark">
            {icons.map((icon,index)=>
            <div className="relative ">
                 <span onClick={()=>setActiveIndex(index)} key={index} className={`text-3xl ${activeIndex===index && '  -translate-y-1/2 navbar-active w-16 h-16 flex items-center justify-center rounded-full bg-purpleLight text-white '} transition-all ease-in-out duration-300 text-white `}>{icon.icon}</span>
@@ -106,6 +106,8 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
                 <div className="lg:w-auto w-auto flex items-center gap-3 h-full ">
                     <span ref={searchIconRef}  onClick={handleClose
                     } className={`text-xl  cursor-pointer ${!isSearch ? "text-white" :"text-amber-500  "} transisision-all ease-in-out duration-300`}>{isSearch ? <IoCloseSharp /> : <CiSearch />}</span>
+
+                    
                     
                     <div className=" w-auto cursor-pointer h-3/5 flex gap-2 items-center rounded-lg px-2 bg-amber-600">
                         <CiLogin className="text-md lg:text-xl text-white"/>
@@ -119,9 +121,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
 
             </nav>
 
-            <div className={` z-10 ${isSearch ? "opacity-100 w-full h-screen  " : "opacity-0  "} backdrop-blur-sm absolute  -z-10`}></div>
+            <div className={`lg:hidden z-10 ${isSearch ? "opacity-100 w-full h-screen  " : "opacity-0  "} backdrop-blur-sm absolute  -z-10`}></div>
 
-            <div ref={searchRef} className={`w-[350px] ${isSearch ? "opacity-100 h-[40px]  z-30" : "opacity-0 invisible h-0 -z-20"} rounded-lg left-1/2 -translate-x-1/2 absolute top-[55px]  flex items-center justify-center transition-all ease-in-out duration-300  bg-purpleLight`}>
+            <div ref={searchRef} className={`w-[350px] lg:w-[270px] ${isSearch ? "opacity-100 h-[40px] lg:h-[35px]  z-30" : "opacity-0 invisible h-0 -z-20"} rounded-lg lg:right-0 lg:top-[7px] lg:translate-x-[250px] left-1/2 -translate-x-1/2 absolute top-[55px]  flex items-center justify-center transition-all ease-in-out duration-300  bg-purpleLight`}>
 
             <div ref={inputRef} className="relative w-full h-full">
                 <input  onChange={handleSearch} type="text" placeholder="ex : naruto" className="w-full h-full outline-none rounded-lg px-3  bg-white text-black"></input>
@@ -132,7 +134,6 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
                     return(
                         <>
                         <SearchPlaceHolder item={item}></SearchPlaceHolder>
-                        
                         </>
                     )
                    }):

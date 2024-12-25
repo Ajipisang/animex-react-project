@@ -25,6 +25,7 @@ import { RiMovieAiFill } from "react-icons/ri";
 import { special } from "../../services/api"
 import Loading from "./loading"
 import { GiRainbowStar } from "react-icons/gi";
+import Footer from "../layout/home/footer"
 function Home(){
     const [topAnime,setTopAnime]=useState([]);
     const [recomended,setRecomended]=useState([]);
@@ -198,13 +199,15 @@ function Home(){
 
                     <Movie topMovie={topOvas} title="ovas" variant="5" isHide={false} icon={<RiMovieAiFill />}></Movie>
 
-<Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<GiRainbowStar />}></Movie>
+                    <Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<GiRainbowStar />}></Movie>
             </div>
            
            
 
        
         </div>
+        <Footer></Footer>
+
         </>
     )
 }
