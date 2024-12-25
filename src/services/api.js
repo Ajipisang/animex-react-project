@@ -25,7 +25,8 @@ const handleRequest = async (url, callback) => {
       console.error(err);
     }
   };
-  
+
+ 
   // Fetch data untuk rekomendasi
   export const getRecomended = (callback) => {
     handleRequest("https://api.jikan.moe/v4/recommendations/anime", callback);
@@ -67,4 +68,8 @@ const handleRequest = async (url, callback) => {
 
   export const special=(callback)=>{
     handleRequest("https://api.jikan.moe/v4/top/anime?type=special&filter=favorite",callback)
+  }
+
+  export const search=(query,callback)=>{
+    handleRequest(`https://api.jikan.moe/v4/anime?q=${query}`,callback)
   }
