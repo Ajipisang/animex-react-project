@@ -88,8 +88,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
            </div>
            )}
         </nav>
-        <div className="sticky  -top-1 lg:top-0  z-50">
-            <nav className="flex   lg:flex px-9 lg:px-12 w-full h-[50px] lg:h-[50px]   items-center justify-between  bg-purpleSemiDark">
+
+        <div className="sticky top-0 z-40">
+        <nav className="flex  sticky  -top-1 lg:top-0 z-10  lg:flex px-9   lg:px-12 w-full h-[50px] lg:h-[50px]   items-center justify-between  bg-purpleSemiDark">
                 <h1 className="text-2xl text-white">AnimeX.</h1>
 
                 <div className="w-[400px] hidden  lg:flex justify-between items-center h-full ">
@@ -118,9 +119,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
 
             </nav>
 
-            <div className={`w-full ${isSearch ? "opacity-100  " : "opacity-0 "} h-screen backdrop-blur-sm absolute  `}></div>
+            <div className={` z-10 ${isSearch ? "opacity-100 w-full h-screen  " : "opacity-0  "} backdrop-blur-sm absolute  -z-10`}></div>
 
-            <div ref={searchRef} className={`w-[350px] ${isSearch ? "opacity-100 h-[40px]" : "opacity-0 invisible h-0"} rounded-lg left-1/2 -translate-x-1/2 absolute  top-[55px]  flex items-center justify-center z-30 transition-all ease-in-out duration-300  bg-purpleLight`}>
+            <div ref={searchRef} className={`w-[350px] ${isSearch ? "opacity-100 h-[40px]  z-30" : "opacity-0 invisible h-0 -z-20"} rounded-lg left-1/2 -translate-x-1/2 absolute top-[55px]  flex items-center justify-center transition-all ease-in-out duration-300  bg-purpleLight`}>
 
             <div ref={inputRef} className="relative w-full h-full">
                 <input  onChange={handleSearch} type="text" placeholder="ex : naruto" className="w-full h-full outline-none rounded-lg px-3  bg-white text-black"></input>
@@ -147,6 +148,9 @@ import { IoCompassSharp } from "react-icons/io5";function NavBar(){
                   
             </div>
         </div>
+        
+         
+     
       
         </>
     )

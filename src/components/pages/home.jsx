@@ -161,7 +161,7 @@ function Home(){
         <>
         <NavBar></NavBar>
 
-        <div className="min-h-screen pb-12 overflow-x-hidden relative  bg-purpleLight">
+        <div className="min-h-screen z-30 pb-12 overflow-x-hidden relative  bg-purpleLight">
 
             <Header topAnime={topAnime} ></Header>
             <Recomended topAnime={topAnime} title="Trending" nav="2" icon={<FaFire />}></Recomended>
@@ -195,6 +195,10 @@ function Home(){
                     <Rank topAnimes={topAnimes} topManga={topManga} topChar={topChar}></Rank>
                     <Movie topMovie={topMovie} title="Movies" variant="7" isHide={false} icon={<MdLocalMovies />}></Movie>
                     <Movie topMovie={upcomings} title="Upcoming" variant="4" isHide={true} icon={<RiMovieAiFill />}></Movie>
+
+                    <Movie topMovie={topOvas} title="ovas" variant="5" isHide={false} icon={<RiMovieAiFill />}></Movie>
+
+<Movie topMovie={spec} title="Special's" variant="6" isHide={false} icon={<GiRainbowStar />}></Movie>
             </div>
            
            

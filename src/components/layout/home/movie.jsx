@@ -73,6 +73,7 @@ function Movie(props) {
               spaceBetween: 10,
             },
           }}
+          freeMode={true}
         >
           {topMovie.slice(0, 30).map((item, index) => (
             <SwiperSlide key={index}>
@@ -81,10 +82,7 @@ function Movie(props) {
           ))}
         </Swiper>
 
-        <div className="flex  gap-2  items-center  lg:hidden justify-start text-white text-xl opacity-50 text-start">
-          <h1 className=" ">discover more</h1>
-          <IoIosArrowForward className="text-white " />
-        </div>
+    
       </div>
     </div>
   );
