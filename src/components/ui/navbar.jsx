@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaRegCompass } from "react-icons/fa6";
 import { useState } from "react";
 import { CiLogin } from "react-icons/ci";
-function NavBar(){
+import { IoCompassSharp } from "react-icons/io5";function NavBar(){
     const [activeIndex,setActiveIndex]=useState(0)
     const icons=[
         {
@@ -13,8 +13,8 @@ function NavBar(){
             title:"Home"
         },
         {
-            icon:<CiSearch  />,
-            title:"Search" 
+            icon:<IoCompassSharp  />,
+            title:"Discover" 
         },
         {
             icon:<CiBookmark  />,
@@ -35,7 +35,7 @@ function NavBar(){
            </div>
            )}
         </nav>
-        <nav className="md:flex sticky z-50 top-0 lg:flex px-9 w-full h-[50px]   items-center justify-between hidden bg-purpleSemiDark">
+        <nav className="md:flex sticky z-50 top-0 lg:flex px-12 w-full h-[50px]   items-center justify-between hidden bg-purpleSemiDark">
             <h1 className="text-2xl text-white">AnimeX.</h1>
 
             <div className="w-[400px] flex justify-between items-center h-full ">
@@ -47,10 +47,16 @@ function NavBar(){
                 )}
             </div>
 
-            <div className="w-[90px] cursor-pointer h-3/5 flex gap-2 items-center rounded-lg px-2 bg-amber-600">
-            <CiLogin className="text-xl text-white"/>
-            <h1 className="text-white">Login</h1>
+
+            <div className="w-[120px] flex items-center gap-3 h-full ">
+                <CiSearch className="text-xl text-white cursor-pointer"/>
+                <div className="w-[90px] cursor-pointer h-3/5 flex gap-2 items-center rounded-lg px-2 bg-amber-600">
+                    <CiLogin className="text-xl text-white"/>
+                    <h1 className="text-white">Login</h1>
+                </div>
             </div>
+
+           
 
         </nav>
         </>
