@@ -3,6 +3,7 @@ import { MdPeople } from "react-icons/md";
 import { PiRankingFill } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
+import { GoPersonFill } from "react-icons/go";
 function HeaderDetails({item}) {
 
     function handleScore(score) {
@@ -37,7 +38,7 @@ function HeaderDetails({item}) {
       icon: (
         <PiRankingFill className="text-purple-600 w-full h-full"></PiRankingFill>
       ),
-      count: handleScore(item.rank),
+      count: item.rank,
       titles: "Rank",
     },
     {
@@ -72,9 +73,18 @@ function HeaderDetails({item}) {
             {item.title}
           </h1>
 
-          <div className="flex gap-2 items-center mb-1">
+          <div className="flex gap-1 items-center mb-1">
             <FaStar className="text-yellow-500 text-sm"></FaStar>
-            <h1 className="text-white text-md ">{item.score} ({handleScore(item.scored_by)})</h1>
+            <div className="flex gap-1">
+            <h1 className="text-white text-md ">{item.score} </h1>
+            <div className="flex gap-1 items-center opacity-50">
+                (
+                <GoPersonFill className="text-white text-sm"></GoPersonFill>
+                <h1 className="text-white text-sm">{handleScore(item.scored_by)}</h1>
+                 )
+            </div>
+            </div>
+          
           </div>
 
           <div className="flex gap-2 items-center text-white opacity-50 text-sm">
