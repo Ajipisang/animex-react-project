@@ -51,10 +51,8 @@ function Rank({topAnimes,topManga,topChar}){
 
                 </div>
 
-                <div className="w-full mt-5 flex lg:h-[600px] overflow-y-scroll flex-col gap-6">
+                <div className="w-full mt-5 flex lg:h-[600px] h-[600px] overflow-y-scroll flex-col gap-6">
                     {dataView.slice(0,10).map((item,index)=><TopAnimeCard key={item.mal_id} item={item} index={index}></TopAnimeCard>)}
-                    
-
                 </div>
 
                
