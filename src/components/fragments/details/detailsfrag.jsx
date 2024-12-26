@@ -5,43 +5,47 @@ import { MdSource } from "react-icons/md";
 import { BiSelection } from "react-icons/bi";
 import { GrStatusUnknown } from "react-icons/gr";
 import { MdOutlineTypeSpecimen } from "react-icons/md";
-function DetailsFrag(){
+import { useState } from "react";
+function DetailsFrag({item}){
+    const [isExpanded, setIsExpanded] = useState(false);
     const genre=["Action","Adventure","Drama"]
     const data=[
         {
             titles:"type",
-            value:"Tv",
+            value:item.type,
             icon:<MdOutlineTypeSpecimen />
 
         },
         {
             titles:"status",
-            value:"Finished Airing",
+            value:item.status,
             icon:<GrStatusUnknown />
         },
         {
             titles:"rating",
-            value:"R - 17+ (violence & profanity)",
+            value:item.rating,
             icon:<Md18UpRating />
         },
         {
             titles:"studios",
-            value:"Sunrise",
+            value: item.studios && item.studios.length > 1
+            ? item.studios.map((studio, index) => index !== item.studios.length - 1 ? studio.name + ", " : studio.name)
+            : item.studios[0]?.name, // Handle the case when there's only one studio
             icon:<MdMovieCreation />
         },
         {
             titles:"Source",
-            value:"Manga",
+            value:item.source,
             icon:<MdSource />
         },
         {
             titles:"genres",
-            value:genre.map((item,index)=>index!==genre.length-1?item+", ":item),
+            value:item.genres && item.genres.length>1 ? item.genres.map((genre, index) => index !== item.genres.length - 1 ? genre.name + ", " : genre.name) : item.genres[0]?.name,
             icon:<BiSelection />
         },
         {
             titles:"duration",
-            value:"1 hr 55 min",
+            value:item.duration,
             icon:<BsFillClockFill />
         }
     ]
@@ -49,24 +53,24 @@ function DetailsFrag(){
         <div className="flex flex-col gap-2 w-full h-auto ">
             <div className="flex flex-col w-full pr-3">
                 <h1 className=" capitalize text-white">synopsis</h1>
-                <h1 className="text-sm text-[rgba(255,255,255,0.5)] mt-1 leading-[20px]">"Crime is timeless. By the year 2071, humanity has expanded across the galaxy, filling the surface of other planets with settlements like those on Earth. These new societies are plagued by murder, .." <span className="text-white">read more</span> </h1>
+                <h1 className="text-sm text-[rgba(255,255,255,0.5)] mt-1 leading-[20px]">{!isExpanded? item.synopsis.substring(0,200)+"...":item.synopsis} <span className="text-white " onClick={()=>setIsExpanded(!isExpanded)}>read more</span> </h1>
             </div>
 
-            <div className="w-full h-[.5px] mt-2 bg-white opacity-50"></div>
+            {/* <div className="w-full h-[.5px] mt-2 bg-white opacity-50"></div> */}
 
             <div className="flex flex-col w-full ">
           
             <table >
                 <tbody className="capitalize ">
-                    {data.map((item,index)=>{
+                    {data.map((data,index)=>{
                         return(
                             <tr>
-                            <td className="w-[80px] h-[30px] items-center flex gap-1 text-white inter text-md">
+                            <td className="w-[80px] h-[30px] items-center flex gap-[5px] text-white inter text-md">
                            
-                            {item.icon}
-                            {item.titles}
+                            {data.icon}
+                            {data.titles}
                             </td>
-                            <td className="inter text-md] text-amber-300">{item.value}</td>
+                            <td className="inter text-md] text-amber-300">{data.value}</td>
                             
                         </tr>
                         )

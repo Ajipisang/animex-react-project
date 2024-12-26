@@ -73,3 +73,7 @@ const handleRequest = async (url, callback) => {
   export const search=(query,callback)=>{
     handleRequest(`https://api.jikan.moe/v4/anime?q=${query}`,callback)
   }
+
+  export const detailsAnime=(id,callback)=>{
+    handleRequest(`https://api.jikan.moe/v4/anime/${id}`,callback)
+  }

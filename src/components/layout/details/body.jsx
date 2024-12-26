@@ -5,7 +5,9 @@ import { useState,useEffect } from "react";
 import DetailsFrag from "../../fragments/details/detailsfrag";
 import Reviews from "../../fragments/details/reviews";
 import Overview from "../../fragments/details/overview";
-function BodyDetails(){
+import { FaPerson } from "react-icons/fa6";
+import Char from "../../fragments/details/char";
+function BodyDetails({item}){
 
     const [active,setActive]=useState(0);
     const data=[
@@ -20,13 +22,17 @@ function BodyDetails(){
         {
             icon: <BiSolidCommentDetail className="w-[20px] h-[20px]" />,
             title:"Reviews"
+        },
+        {
+            icon: <FaPerson className="w-[20px] h-[20px]" />,
+            title:"Cast"
         }
     ]
 
     const page=[
         {
             title:"Details",
-            content:<DetailsFrag></DetailsFrag>
+            content:<DetailsFrag item={item}></DetailsFrag>
         },
         {
             title:"Overview",
@@ -35,10 +41,14 @@ function BodyDetails(){
         {
             title:"Reviews",
             content:<Reviews></Reviews>
+        },
+        {
+            title:"Cast",
+            content:<Char></Char>
         }
     ]
     return(
-        <div className="flex w-full px-6 flex-col ">
+        <div className="flex w-full px-2 flex-col ">
             <div className="w-full capitalize text-sm  text-white flex justify-between">
                 {data.map((item,index)=>{
                     return(
