@@ -3,12 +3,17 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { RouterProvider,createBrowserRouter } from 'react-router-dom'
-import Home from './components/pages/home.jsx'
+import Home from './components/pages/home/home.jsx'
+import Details from './components/pages/details/detailsindex.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
+  {
+    path : "/details/:id",
+    element: <Details/>
+  }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>

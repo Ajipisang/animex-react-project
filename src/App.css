@@ -54,7 +54,7 @@
   width: 100%;
   height: 20%;
   z-index: 10; /* Pastikan overlay ini lebih tinggi dari gambar */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, #635985 60%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #393053 60%);
 }
 
 .custom-swiper .swiper-scrollbar {
