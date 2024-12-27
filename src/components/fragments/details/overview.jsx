@@ -129,7 +129,7 @@ function Overview({item}){
             <Bar data={data} options={options} />
         </div>
         <div className="w-full mt-5 h-[400px] flex">
-            <Line data={data2} options={options} />
+            <Bar data={data2} options={options} />
         </div>
         </>
     );

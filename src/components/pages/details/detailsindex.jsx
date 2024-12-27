@@ -42,7 +42,7 @@ function Details(){
     },[id])
 
     useEffect(()=>{
-        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 && dataStats.length !==0 && dataVideo.length !==0){
+        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 && dataStats.length !==0 ){
             setIsLoading(false)
         }
            

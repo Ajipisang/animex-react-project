@@ -77,6 +77,16 @@ function DetailsFrag({item}){
                    
                 </tbody>
             </table>
+
+           <div className="flex flex-col mt-2">
+            <h1 className="text-white text-xl capitalize">trailer</h1>
+           {item.trailer.youtube_id==null ? <div className="w-full h-[300px] rounded-lg overflow-hidden flex items-center justify-center bg-white">
+            <h1 className="text-black text-xl capitalize">no trailer found </h1>
+
+           </div> :<div className="w-full h-[300px] rounded-lg overflow-hidden">
+            <iframe width="100%" height="300px" src={item.trailer.embed_url} title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>}
+           </div>
         
             </div>
         </div>
