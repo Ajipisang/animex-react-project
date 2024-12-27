@@ -7,7 +7,7 @@ import Reviews from "../../fragments/details/reviews";
 import Overview from "../../fragments/details/overview";
 import { FaPerson } from "react-icons/fa6";
 import Char from "../../fragments/details/char";
-function BodyDetails({item,char}){
+function BodyDetails({item,char,reviews}){
 
     const [active,setActive]=useState(0);
     const data=[
@@ -40,7 +40,7 @@ function BodyDetails({item,char}){
         },
         {
             title:"Reviews",
-            content:<Reviews></Reviews>
+            content:<Reviews item={reviews}></Reviews>
         },
         {
             title:"Cast",

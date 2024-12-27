@@ -81,3 +81,7 @@ const handleRequest = async (url, callback) => {
   export const characters=(id,callback)=>{
     handleRequest(`https://api.jikan.moe/v4/anime/${id}/characters`,callback)
   }
+
+  export const reviews=(id,callback)=>{
+    handleRequest(`https://api.jikan.moe/v4/anime/${id}/reviews`,callback)
+  }

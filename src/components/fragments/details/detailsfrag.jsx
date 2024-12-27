@@ -53,10 +53,9 @@ function DetailsFrag({item}){
         <div className="flex flex-col gap-2 w-full h-auto ">
             <div className="flex flex-col w-full pr-3">
                 <h1 className=" capitalize text-white">synopsis</h1>
-                <h1 className="text-sm text-[rgba(255,255,255,0.5)] mt-1 leading-[20px]">{!isExpanded? item.synopsis.substring(0,200)+"...":item.synopsis} <span className="text-white " onClick={()=>setIsExpanded(!isExpanded)}>read more</span> </h1>
+                <h1 className="text-sm text-[rgba(255,255,255,0.5)] mt-1 leading-[20px]">{!isExpanded? item.synopsis.substring(0,200)+"...":item.synopsis} <span className="text-white " onClick={()=>setIsExpanded(!isExpanded)}>{!isExpanded?" read more":"read less"}</span> </h1>
             </div>
 
-            {/* <div className="w-full h-[.5px] mt-2 bg-white opacity-50"></div> */}
 
             <div className="flex flex-col w-full ">
           
