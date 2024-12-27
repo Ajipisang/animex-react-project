@@ -1,9 +1,14 @@
 import { useState } from "react";
 import CharCard from "../../ui/details/charcard";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { MdOutlineArrowBackIos } from "react-icons/md";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { Navigation } from "swiper/modules";
 function Char({item}){
     const [active,setActive]=useState(6);
-
     const [isEnd, setIsEnd] = useState(false);
+    const [isStart, setIsStart] = useState(true);
     const handleClick=()=>{
         setActive(item.length);
         setIsEnd(true);
@@ -15,17 +20,43 @@ function Char({item}){
     }
     
     return(
-        <div className="w-full px-2 min-h-[300px] ">
-            <div className="flex flex-wrap justify-center gap-2 gap-y-3">
-             
+        <div className="w-full px-6 min-h-[300px] ">
+            <div className="flex justify-center gap-2 gap-y-3">
+                <Swiper
+                slidesPerView={2}
+                spaceBetween={40}
+                className="relative "
+                navigation={{
+                    prevEl: "#prevButtonChar",
+                    nextEl: "#nextButtonChar",
+                }}
+                onSlideChange={(swiper) => {
+                    setIsEnd(swiper.isEnd);
+                    setIsStart(swiper.isBeginning);
+                }}
+                modules={[Navigation]}
+                >
+                     <div  className="w-full absolute  flex justify-between h-[50px]  top-1/2 z-20">
+                     <div id="prevButtonChar" className={`w-[40px] ${isStart && "translate-x-[-40px] opacity-0"} flex items-center justify-center h-full bg-[rgba(0,0,0,0.5)] transition-all duration-300 ease-in-out`}>
+                        <MdOutlineArrowBackIos  className="w-[20px] h-[20px] text-white"/>
+                     </div>
 
-                {item.slice(0,active).map((item,index)=>(<CharCard key={index} item={item}></CharCard>))}
-
+                     <div id="nextButtonChar" className={`w-[40px] ${isEnd && "translate-x-[40px] opacity-0"} flex items-center justify-center h-full bg-[rgba(0,0,0,0.5)] transition-all duration-300 ease-in-out`}>
+                        <MdOutlineArrowForwardIos  className="w-[20px] h-[20px] text-white"/>
+                     </div>
+                </div>
+                {item.map((item,index)=>(
+                    <SwiperSlide>
+                        <CharCard key={index} item={item}></CharCard>
+                    </SwiperSlide>
+                ))}
+               
+                </Swiper>
             </div>
 
-            <div onClick={handleClick} className="w-full mt-2 items-center text-white text-xl capitalize rounded-lg flex h-[50px] bg-yellow-500 justify-center">
+            {/* <div onClick={handleClick} className="w-full mt-2 items-center text-white text-xl capitalize rounded-lg flex h-[50px] bg-yellow-500 justify-center">
                 <h1>{isEnd?"show less":"show more"}</h1>
-            </div>
+            </div> */}
         </div>
     )
 }

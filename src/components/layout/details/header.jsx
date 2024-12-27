@@ -11,7 +11,7 @@ function HeaderDetails({item}) {
             return (score / 1000000).toFixed(1) + "M+";
         }
         if(score >100000){
-            return (score / 10000).toFixed(1) + "k+";
+            return (score / 1000).toFixed(1) + "k+";
         }
         if(score >10000){
             return (score / 1000).toFixed(1) + "K+";
