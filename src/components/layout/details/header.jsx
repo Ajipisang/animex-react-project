@@ -52,7 +52,8 @@ function HeaderDetails({item}) {
 
   
   return (
-    <section className="w-full h-[300px] relative bgOverlay2  bg-black">
+    <>
+    <section className="w-full  h-[300px] relative bgOverlay2  bg-black">
       <div className="w-full h-full blur-sm  overflow-hidden">
         <img
           src={item.images.jpg.large_image_url}
@@ -68,7 +69,12 @@ function HeaderDetails({item}) {
           ></img>
         </div>
 
-        <div className="w-full flex flex-col items-center gap-1 px-2 text-center">
+        
+      </div>
+
+     
+    </section>
+    <div className="w-full flex flex-col mt-8 items-center gap-1 px-2 text-center">
           <h1 className="mt-2 text-white text-2xl capitalize ">
             {item.title}
           </h1>
@@ -96,6 +102,7 @@ function HeaderDetails({item}) {
          
         </div>
 
+        <div className="w-full flex flex-col items-center justify-center">
         <div className="w-[330px]  flex justify-between h-[80px] bg-[rgba(20,23,24,0.2)] rounded-lg shadow-xl p-2  mt-3">
           {data.map((item, index) => {
             return (
@@ -107,8 +114,8 @@ function HeaderDetails({item}) {
             );
           })}
         </div>
-      </div>
-    </section>
+        </div>
+    </>
   );
 }
 

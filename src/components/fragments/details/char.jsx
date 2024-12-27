@@ -20,11 +20,11 @@ function Char({item}){
     }
     
     return(
-        <div className="w-full px-6 min-h-[300px] ">
-            <div className="flex justify-center gap-2 gap-y-3">
+        <div className="w-full px-1 min-h-[300px] ">
+            <div className="flex justify-between gap-2 gap-y-3">
                 <Swiper
                 slidesPerView={2}
-                spaceBetween={40}
+                spaceBetween={20}
                 className="relative "
                 navigation={{
                     prevEl: "#prevButtonChar",

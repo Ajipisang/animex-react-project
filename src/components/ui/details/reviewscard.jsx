@@ -13,6 +13,7 @@ import { TbAlertCircle } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { FaQuestion } from "react-icons/fa6"
+import { PiThumbsDownFill } from "react-icons/pi";
 function ReviewsCard({ item }) {
     function yearsAgo(dateString) {
             const date = new Date(dateString); // Konversi string ke objek Date
@@ -63,13 +64,13 @@ function ReviewsCard({ item }) {
                 return <div className={`flex gap-1 items-center text-[12px] bg-green-600  text-white px-1 rounded-[5px] capitalize `}>
                 <h1>{tag}</h1>
                
-                <span  className="w-[10px] h-[10px]"><FaCheck /></span>
+                <span  className="w-[10px] h-[10px]"><PiThumbsUpFill /></span>
             </div>;
             } else if (tag == "Not Recommended") {
                  return <div className={`flex gap-1 items-center text-[12px] bg-red-600  text-white px-1 rounded-[5px] capitalize `}>
                 <h1>{tag}</h1>
                
-                <span  className="w-[10px] h-[10px]"><FiX /></span>
+                <span  className="w-[10px] h-[10px]"><PiThumbsDownFill  /></span>
             </div>;
             }else{
                 return <div className={`flex gap-1 items-center text-[12px] bg-yellow-600  text-white px-1 rounded-[5px] capitalize `}>
@@ -113,7 +114,7 @@ function ReviewsCard({ item }) {
                             </div>
         
                             <div className="flex flex-col gap-1">
-                                <h1 className="text-sm leading-5 text-[rgba(255,255,255,0.6)]">{!isOpen  ? item.review.substring(0,200)+"...": item.review} <span onClick={() => setIsOpen(!isOpen)} className="text-white">{isOpen ? "less" : "more"}</span></h1>
+                                <h1 className="text-sm leading-5 text-[rgba(255,255,255,1)]">{!isOpen  ? item.review.substring(0,200)+"...": item.review} <span onClick={() => setIsOpen(!isOpen)} className="text-white opacity-60">{isOpen ? "less" : "more"}</span></h1>
                                 <div className="flex w-full items-center justify-between ">
                                   <div className="w-3/4 flex flex-wrap gap-2 flex-1">
                                   {data.map((item,index)=>{

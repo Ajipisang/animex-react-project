@@ -8,6 +8,7 @@ import { detailsAnime } from "../../../services/api";
 import { characters } from "../../../services/api";
 import { reviews } from "../../../services/api";
 import { statistics } from "../../../services/api";
+import { video } from "../../../services/api";
 function Details(){
     const params=useParams();
     const id =params.id;
@@ -15,6 +16,7 @@ function Details(){
     const [charDetails, setCharDetails] = useState([]);
     const [dataReviews, setDataReviews] = useState([]);
     const [dataStats, setDataStats] = useState([]);
+    const [dataVideo, setDataVideo] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(()=>{
         detailsAnime(id,(data)=>{
@@ -33,16 +35,21 @@ function Details(){
         statistics(id,(data)=>{
             setDataStats(data.data)
         })
+
+        video(id,(data)=>{
+            setDataVideo(data.data)
+        })
     },[id])
 
     useEffect(()=>{
-        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 ){
+        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 && dataStats.length !==0 && dataVideo.length !==0){
             setIsLoading(false)
-            
         }
+           
+
         
         
-    },[dataDetails,charDetails,dataReviews,dataStats])
+    },[dataDetails,charDetails,dataReviews,dataStats,dataVideo])
 
 
 
@@ -56,8 +63,8 @@ function Details(){
         <NavBar></NavBar>
         <div className="w-full h-auto pb-[100px] bg-purpleSemiDark">
             <HeaderDetails item={dataDetails} ></HeaderDetails>
-            <div className="mt-[280px]">
-                <BodyDetails item={dataDetails} char={charDetails} reviews={dataReviews} stat={dataStats}></BodyDetails>
+            <div className="mt-9">
+                <BodyDetails item={dataDetails} char={charDetails} reviews={dataReviews} stat={dataStats} video={dataVideo.episodes}></BodyDetails>
             </div>
         </div>
         </>

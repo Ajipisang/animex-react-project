@@ -8,10 +8,12 @@ import Overview from "../../fragments/details/overview";
 import { FaPerson } from "react-icons/fa6";
 import Char from "../../fragments/details/char";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Episode from "../../fragments/details/episode";
+import { TbPlayerPlayFilled } from "react-icons/tb";
 // Import Swiper styles
 import "swiper/css";
 
-function BodyDetails({item,char,reviews,stat}){
+function BodyDetails({item,char,reviews,stat,video}){
 
     const [active,setActive]=useState(0);
     const data=[
@@ -32,8 +34,8 @@ function BodyDetails({item,char,reviews,stat}){
             title:"Cast"
         },
         {
-            icon: <FaPerson className="w-[20px] h-[20px]" />,
-            title:"Cast"
+            icon: <TbPlayerPlayFilled className="w-[20px] h-[20px]" />,
+            title:"Episodes"
         }
     ]
 
@@ -56,7 +58,7 @@ function BodyDetails({item,char,reviews,stat}){
         },
         {
             title:"Cast",
-            content:<Char item={char}></Char>
+            content:<Episode item={video} ></Episode>
         },
         
     ]
