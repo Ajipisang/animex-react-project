@@ -11,6 +11,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
 import { FaQuestion } from "react-icons/fa6"
 function ReviewsCard({ item }) {
     function yearsAgo(dateString) {
@@ -56,6 +57,28 @@ function ReviewsCard({ item }) {
             }
         }
 
+
+        function handleTag(tag){
+            if (tag == "Recommended") {
+                return <div className={`flex gap-1 items-center text-[12px] bg-green-600  text-white px-1 rounded-[5px] capitalize `}>
+                <h1>{tag}</h1>
+               
+                <span  className="w-[10px] h-[10px]"><FaCheck /></span>
+            </div>;
+            } else if (tag == "Not Recommended") {
+                 return <div className={`flex gap-1 items-center text-[12px] bg-red-600  text-white px-1 rounded-[5px] capitalize `}>
+                <h1>{tag}</h1>
+               
+                <span  className="w-[10px] h-[10px]"><FiX /></span>
+            </div>;
+            }else{
+                return <div className={`flex gap-1 items-center text-[12px] bg-yellow-600  text-white px-1 rounded-[5px] capitalize `}>
+                <h1>{tag}</h1>
+                <span  className="w-[10px] h-[10px]"><FaQuestion /></span>
+            </div>;
+            }
+        }
+
     return(
          <div className="w-full h-auto p-2 py-3 flex flex-col gap-3 bg-purpleLight rounded-lg shadow-xl">
                             {/* pp dan username */}
@@ -74,11 +97,7 @@ function ReviewsCard({ item }) {
                                             </div>
                                         </div>
                                         <div className="flex gap-3">
-                                            <div className={`flex gap-1 items-center text-[12px] ${item.tags[0]=="Recommended" ? "bg-green-600": "bg-yellow-600"}  text-white px-1 rounded-[5px] capitalize `}>
-                                                <h1>{item.tags[0]}</h1>
-                                               
-                                                <span  className="w-[10px] h-[10px]">{item.tags[0]=="Recommended" ? <FaCheck /> : <FaQuestion />}</span>
-                                            </div>
+                                           {handleTag(item.tags[0])}
         
                                             <div className={`flex gap-1 items-center text-[12px] ${item.is_spoiler ? "bg-red-600" : "bg-green-600"} text-white px-1 rounded-[5px] capitalize `}>
                                                 <h1>{item.is_spoiler ? "spoiler alert" : "no spoiler"}</h1>
