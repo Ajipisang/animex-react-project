@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 
-function BodyDetails({item,char,reviews}){
+function BodyDetails({item,char,reviews,stat}){
 
     const [active,setActive]=useState(0);
     const data=[
@@ -44,7 +44,7 @@ function BodyDetails({item,char,reviews}){
         },
         {
             title:"Overview",
-            content:<Overview></Overview>
+            content:<Overview item={stat}></Overview>
         },
         {
             title:"Reviews",
