@@ -4,6 +4,7 @@ import { PiRankingFill } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { GoPersonFill } from "react-icons/go";
+import { CiBookmark } from "react-icons/ci";
 function HeaderDetails({item}) {
 
     function handleScore(score) {
@@ -53,7 +54,7 @@ function HeaderDetails({item}) {
   
   return (
     <>
-    <section className="w-full  h-[300px] relative bgOverlay2  bg-black">
+    <section className="w-full  h-[320px] relative bgOverlay2  bg-black">
       <div className="w-full h-full blur-sm  overflow-hidden">
         <img
           src={item.images.jpg.large_image_url}
@@ -97,6 +98,12 @@ function HeaderDetails({item}) {
             <h1>{item.year}</h1>
             <div className="w-[5px] h-[5px] bg-white rounded-full"></div>
             <h1>{item.season}</h1>
+           
+          </div>
+
+          <div className="w-auto px-2 gap-1 h-[30px] border border-yellow-500 rounded-lg flex items-center text-yellow-500 text-md justify-center">
+            <h1 className=" text-sm">Bookmark</h1>
+            <CiBookmark className="mt-1"></CiBookmark>
           </div>
 
          

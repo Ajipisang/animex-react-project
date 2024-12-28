@@ -9,6 +9,8 @@ import { characters } from "../../../services/api";
 import { reviews } from "../../../services/api";
 import { statistics } from "../../../services/api";
 import { video } from "../../../services/api";
+import RecomendedAnime from "../../layout/details/recomendation";
+import { recomended } from "../../../services/api";
 function Details(){
     const params=useParams();
     const id =params.id;
@@ -17,6 +19,7 @@ function Details(){
     const [dataReviews, setDataReviews] = useState([]);
     const [dataStats, setDataStats] = useState([]);
     const [dataVideo, setDataVideo] = useState([]);
+    const [recomendedData,setRecomendedData]=useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(()=>{
         detailsAnime(id,(data)=>{
@@ -39,17 +42,19 @@ function Details(){
         video(id,(data)=>{
             setDataVideo(data.data)
         })
+
+        recomended(id,(data)=>{
+            setRecomendedData(data.data)
+        })
     },[id])
 
     useEffect(()=>{
-        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 && dataStats.length !==0 ){
+        if(dataDetails.length !==0 && charDetails.length !==0 && dataReviews.length !==0 && dataStats.length !==0 && recomendedData.length !==0 ){
             setIsLoading(false)
         }
-           
 
         
-        
-    },[dataDetails,charDetails,dataReviews,dataStats,dataVideo])
+    },[dataDetails,charDetails,dataReviews,dataStats,dataVideo,recomendedData])
 
 
 
@@ -65,6 +70,7 @@ function Details(){
             <HeaderDetails item={dataDetails} ></HeaderDetails>
             <div className="mt-9">
                 <BodyDetails item={dataDetails} char={charDetails} reviews={dataReviews} stat={dataStats} video={dataVideo.episodes}></BodyDetails>
+                <RecomendedAnime data={recomendedData}></RecomendedAnime>
             </div>
         </div>
         </>

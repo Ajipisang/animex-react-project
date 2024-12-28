@@ -125,10 +125,10 @@ function Overview({item}){
 
     return (
         <>
-        <div className="w-full h-[400px] flex">
+        <div className="w-full h-[300px] flex">
             <Bar data={data} options={options} />
         </div>
-        <div className="w-full mt-5 h-[400px] flex">
+        <div className="w-full mt-5 h-[300px] flex">
             <Bar data={data2} options={options} />
         </div>
         </>
