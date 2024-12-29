@@ -17,7 +17,7 @@ const icon = [
 ];
 function Footer() {
   return (
-    <section className="flex flex-col w-full lg:px-[120px] -z-10 h-full bg-purpleSemiDark pb-[100px] lg:pb-[50px] gap-3">
+    <section className="flex flex-col w-full  -z-10 h-full bg-purpleSemiDark pb-[100px] lg:pb-[50px] gap-3">
       <section className=" lg:pb-8 text-center  items-center py-6 lg:flex-row lg:justify-between  flex flex-col gap-2 ">
         <div className="flex  flex-col items-center lg:items-start lg:text-start max-w-[300px] gap-2">
           <h1 className="text-white text-3xl">AnimeX.</h1>

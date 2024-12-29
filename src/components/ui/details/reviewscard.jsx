@@ -81,7 +81,7 @@ function ReviewsCard({ item }) {
         }
 
     return(
-         <div className="w-full h-auto p-2 py-3 flex flex-col gap-3 bg-purpleLight rounded-lg shadow-xl">
+         <div className="w-full lg:w-3/4 h-auto p-2 py-3 flex flex-col gap-3 bg-purpleLight rounded-lg shadow-xl">
                             {/* pp dan username */}
                             <div className="flex w-full items-center justify-between">
                                <div className="flex items-center gap-2">
@@ -109,17 +109,19 @@ function ReviewsCard({ item }) {
                                     </div>
         
                                </div>
-                               <HiOutlineDotsVertical  className="w-[20px] h-[20px] text-white"/>
+                               
+                               <h1 className="text-[12px] text-white">({yearsAgo(item.date) })</h1>
         
                             </div>
         
                             <div className="flex flex-col gap-1">
-                                <h1 className="text-sm leading-5 text-[rgba(255,255,255,1)]">{!isOpen  ? item.review.substring(0,200)+"...": item.review} <span onClick={() => setIsOpen(!isOpen)} className="text-white opacity-60">{isOpen ? "less" : "more"}</span></h1>
+                                <h1 className="text-sm lg:max-w-3/4 leading-5 text-[rgba(255,255,255,1)]">{!isOpen  ? item.review.substring(0,400)+"...": item.review} <span onClick={() => setIsOpen(!isOpen)} className="text-white opacity-60 cursor-pointer">{isOpen ? "less" : "more"}</span></h1>
                                 <div className="flex w-full items-center justify-between ">
                                   <div className="w-3/4 flex flex-wrap gap-2 flex-1">
                                   {data.map((item,index)=>{
                                         return(
-                                            <div data-tip={item.tooltip} className="flex tooltip tooltip-bottom gap-1 mt-2 items-center px-2 bg-[rgba(193,173,23,0.5)] rounded-[5px]">
+                                            <div data-tip={item.tooltip} className="flex tooltip tooltip-bottom gap-1 mt-2 items-center px-2 bg-black/20 rounded-[5px]">
+                                                <h1 className="text-[12px] hidden lg:block text-white/70">{item.tooltip}</h1>
                                                 {item.icons}
                                                 <h1 className="text-white text-sm">{item.value}</h1>
                                             </div>
@@ -127,7 +129,7 @@ function ReviewsCard({ item }) {
                                     })}
                                   </div>
         
-                                   <h1 className="text-[12px] text-white">({yearsAgo(item.date) })</h1>
+                                   <h1 className="text-[12px] text-white/70 cursor-pointer">report</h1>
                               
                                 </div>
                             </div>

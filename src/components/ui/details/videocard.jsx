@@ -1,11 +1,11 @@
 function VideoCard({item}){
     return(
-        <div className="w-[160px] flex flex-col gap-1 h-[170px] ">
-        <div className="w-full min-h-[120px] bg-black overflow-hidden rounded-lg">
+        <div className="w-[160px] lg:w-[300px] flex flex-col mb-2 h-[170px] lg:h-[250px] ">
+        <div className="w-full h-full bg-black overflow-hidden rounded-lg">
             <img src={item.images.jpg.image_url} className="w-full h-full object-cover"></img>
         </div>
         <h1 className="text-sm text-white text-opacity-50">{item.episode} </h1>
-        <h className=" text-white text-[13px]">{item.title}</h>
+        <h1 className=" text-white text-[13px]">{item.title}</h1>
     </div>
     )
 }

@@ -13,7 +13,7 @@ function RecomendedAnime({data}){
             <div className='w-full flex items-center justify-between'>
                 <div className="flex h-[20px] items-center gap-2">
                     <div className="w-[4px] h-full bg-purpleLight"></div>
-                    <h1 className="text-xl text-white capitalize font-semibold" >more like this</h1>
+                    <h1 className="text-xl text-white capitalize lg:text-2xl font-semibold" >more like this</h1>
                 </div>
                 <div className='flex text-sm  gap-2'>
                 <FaArrowLeftLong id='prevButtonRecomended' className={` text-white cursor-pointer ${isStart && 'opacity-50'}`} />
@@ -21,7 +21,7 @@ function RecomendedAnime({data}){
                 </div>
             </div>
             
-            <div className="flex w-screen justify-center gap-2">
+            <div className="flex w-full justify-center gap-2 ">
                 <Swiper
                 slidesPerView={2.5}
                 navigation={
@@ -33,6 +33,12 @@ function RecomendedAnime({data}){
                 onSlideChange={(swiper) => {
                     setIsEnd(swiper.isEnd);
                     setIsStart(swiper.isBeginning);
+                }}
+                breakpoints={{
+                    1024: {
+                        slidesPerView: 6,
+                        spaceBetween: 20,
+                    }
                 }}
                 modules={[Navigation]}
                 spaceBetween={40}

@@ -21,7 +21,14 @@ function Char({item}){
     
     return(
         <div className="w-full px-1 min-h-[300px] ">
-            <div className="flex justify-between gap-2 gap-y-3">
+            <div className="lg:flex gap-6 gap-y-6  justify-start flex-wrap hidden">
+            {item.map((item,index)=>(
+                    
+                        <CharCard key={index} item={item}></CharCard>
+                    
+                ))}
+            </div>
+            <div className="flex lg:hidden justify-between gap-2 gap-y-3">
                 <Swiper
                 slidesPerView={2}
                 spaceBetween={20}
@@ -34,6 +41,17 @@ function Char({item}){
                     setIsEnd(swiper.isEnd);
                     setIsStart(swiper.isBeginning);
                 }}
+                breakpoints={
+                    {
+                        640: {
+
+                        },
+                        1024: {
+                          slidesPerView: 6,
+                          spaceBetween: 20  
+                        },
+                    }
+                }
                 modules={[Navigation]}
                 >
                      <div  className="w-full absolute  flex justify-between h-[50px]  top-1/2 z-20">

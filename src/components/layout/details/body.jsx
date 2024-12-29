@@ -64,7 +64,24 @@ function BodyDetails({item,char,reviews,stat,video}){
     ]
     return(
         <div className="flex w-full relative px-2 flex-col ">
-            <div className="w-full  capitalize text-sm  text-white flex justify-between">
+            <div className="hidden lg:flex w-full  gap-20">
+                {data.map((item,index)=>{
+                    return(
+                      <>
+                        <div onClick={()=>{setActive(index)}} className={`flex gap-2 items-center ${active==index?"text-yellow-500 opacity-100":"text-white opacity-50 relative "} flex-col transision-all h-[30px] hover:text-yellow-500 hover:opacity-100 cursor-pointer relative duration-300 overflow-visible`}>
+                            <div className="flex gap-2">
+                            {item.icon}
+                            <h1>{item.title}</h1>
+                             </div>
+                             <div className={`w-full h-[2px] ${active==index?"bg-yellow-500 opacity-100":""}  absolute bottom-[-8px] transition-all duration-300 ease-in-out` }></div>
+
+                    </div>
+                   
+                      </>   
+                    )
+                })}
+            </div>
+            <div className="w-full lg:hidden capitalize text-sm  text-white flex justify-between">
                 <Swiper
                 
                 slidesPerView={3}

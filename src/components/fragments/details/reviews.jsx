@@ -22,11 +22,11 @@ function Reviews({item}){
 
     
     return(
-        <div className="w-full min-h-full ">
-            <div className="w-full h-full flex gap-5 flex-col">
+        <div className="w-full min-h-full flex flex-col  items-start ">
+            <div className="w-full h-full flex gap-5  flex-col lg:flex-wrap lg:flex-row">
               {item.slice(0,active).map((item,index)=>(<ReviewsCard key={index} item={item}></ReviewsCard>))}
             </div>
-            <div onClick={handleClick} className="w-full items-center text-white text-xl capitalize rounded-lg flex h-[50px] bg-yellow-500 justify-center mt-5">
+            <div onClick={handleClick} className="w-full cursor-pointer lg:w-1/2 items-center text-white text-xl capitalize rounded-lg flex h-[50px] bg-yellow-500 justify-center mt-5">
                 <h1>{isOpen?"show less":"show more"}</h1>
             </div>
         </div>
