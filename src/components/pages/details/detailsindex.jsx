@@ -133,7 +133,7 @@ function Details() {
      
       
       <div className="w-full h-screen ">
-      <div className="w-full h-full overflow-x-hidden  pb-[100px] lg:pb-0 bg-purpleSemiDark">
+      <div className="w-full h-full overflow-x-hidden   lg:pb-0 bg-purpleSemiDark">
         <NavBar></NavBar>
         <HeaderDetails item={dataDetails}></HeaderDetails>
         
