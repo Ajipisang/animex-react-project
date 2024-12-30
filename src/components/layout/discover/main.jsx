@@ -1,7 +1,7 @@
 import { RiMenu3Fill } from "react-icons/ri";
 import CardDiscover from "../../fragments/discover/animecard";
 import { useState,useEffect } from "react";
-function MainDiscover({anime}) {
+function MainDiscover({anime,isActive,setIsActive}) {
     let pages=[];
     const [currPage, setCurrPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(6);
@@ -11,10 +11,10 @@ function MainDiscover({anime}) {
     const lastPostIndex = currPage * postPerPage;
     const firstPostIndex = lastPostIndex - postPerPage;
     return(
-        <div className="flex mb-[100px] flex-col mt-5 gap-2">
+        <div className="flex mb-[100px] relative flex-col mt-5 gap-2">
             <div className="flex items-center gap-2">
                 <div className="w-full h-[3px] bg-white"></div>
-                <RiMenu3Fill className="w-[24px] h-[24px] text-white"/>
+                <RiMenu3Fill onClick={()=>setIsActive(!isActive)} className="w-[24px] h-[24px] text-white"/>
             </div>
 
             <div className="w-full flex px-2 justify-between flex-wrap gap-2 ">
@@ -25,15 +25,18 @@ function MainDiscover({anime}) {
                 )
               })}
             </div>
-            <div className="flex justify-center mt-3 gap-2">
+            <div className="join flex justify-center mt-2">
                 {pages.map((item,index)=>{
                     return(
-                        <div className={`w-[40px] h-[40px] font-semibold rounded-lg flex items-center justify-center  ${currPage===item ? "bg-yellow-600 text-black" : "bg-black/50 text-white"} `}>
-                             <h1 onClick={()=>{setCurrPage(item)}} key={index}>{item}</h1>
+                        <div onClick={()=>setCurrPage(item)} className="join">
+                            <button className={`join-item btn btn-active ${item===currPage && "bg-yellow-500 text-black"}`}>{item}</button>
                         </div>
+                        
                     )
                 })}
             </div>
+
+           
         </div>
     )
 }

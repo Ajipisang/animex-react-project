@@ -4,7 +4,7 @@ function CardDiscover({item}){
         <img src={item.images.jpg.image_url} className="w-full h-full opacity-70 object-cover">
         </img>
         <div className="absolute bottom-2 left-2 flex flex-col w-full">
-            <h1 className=" text-slate-100 font-semibold text-[17px] ">{item.title.length > 15 ? item.title.slice(0, 15) + "..." : item.title}</h1>
+            <h1 className=" text-slate-100  text-[15px] ">{item.title.length > 15 ? item.title.slice(0, 15) + "..." : item.title}</h1>
             <div className="flex text-sm leading-3 items-center text-white/70 gap-2">
                 <h1>{item.year || "N/A"}</h1>
                 <div className="w-[5px]  h-[5px] rounded-full bg-white/90"></div>

@@ -6,7 +6,6 @@ import { BiSelection } from "react-icons/bi";
 import { GrStatusUnknown } from "react-icons/gr";
 import { MdOutlineTypeSpecimen } from "react-icons/md";
 import { useState } from "react";
-import Footer from "../../layout/home/footer";
 function DetailsFrag({item}){
     const [isExpanded, setIsExpanded] = useState(false);
     const genre=["Action","Adventure","Drama"]
